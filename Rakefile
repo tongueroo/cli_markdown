@@ -7,5 +7,5 @@ require "lono"
 require "./lib/cli_markdown"
 desc "Generates cli reference docs as markdown"
 task :docs do
-  CliMarkdown::Creator.create_all(Lono::CLI)
+  CliMarkdown::Creator.create_all(Lono::CLI, "lono")
 end

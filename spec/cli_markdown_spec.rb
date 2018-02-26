@@ -6,6 +6,7 @@ describe CliMarkdown::Page do
 
   context "lono" do
     let(:cli_class) { Lono::CLI }
+    let(:cli_name) { "lono" }
     context "Creator.create_all" do
       it "docs command" do
         out = execute("rake docs")
@@ -14,7 +15,7 @@ describe CliMarkdown::Page do
 
       it "generates all docs pages" do
         CliMarkdown::Creator.mute = true
-        CliMarkdown::Creator.create_all(cli_class)
+        CliMarkdown::Creator.create_all(cli_class, cli_name)
       end
     end
 

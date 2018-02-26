@@ -10,10 +10,11 @@ To use, add the following to your `Rakefile`:
     require "cli_markdown"
     desc "Generates cli reference docs as markdown"
     task :docs do
-      CliMarkdown::Creator.create_all(YourTool::CLI)
+      CliMarkdown::Creator.create_all(YourTool::CLI, "cli_name")
     end
 
-The `YourTool::CLI` class must be a Thor class.
+* The `YourTool::CLI` class must be a Thor class.
+* The cli_name is the name of the cli command used for your tool.
 
 To generate docs, you can call:
 

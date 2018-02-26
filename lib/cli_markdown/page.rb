@@ -1,9 +1,11 @@
 module CliMarkdown
   class Page
-    def initialize(command_class, command_name, parent_command_name=nil)
-      @command_class = command_class
-      @command_name = command_name
-      @parent_command_name = parent_command_name
+    attr_reader :cli_name
+    def initialize(command_class, cli_name, command_name, parent_command_name=nil)
+      @command_class = command_class # IE: Lono::CLI
+      @cli_name = cli_name # IE: lono
+      @command_name = command_name # IE: generate
+      @parent_command_name = parent_command_name # IE: cfn
       @command = @command_class.commands[@command_name]
     end
 
@@ -42,10 +44,6 @@ module CliMarkdown
         # In Markdown we need 4 spaces.
         line.sub(/^  \b/, '    ')
       end.join("\n")
-    end
-
-    def cli_name
-      "lono"
     end
 
     def path

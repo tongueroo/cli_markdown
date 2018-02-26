@@ -4,9 +4,9 @@ module CliMarkdown
   class Creator
     cattr_accessor :mute
 
-    def self.create_all(command_class,  parent_command_name=nil)
+    def self.create_all(command_class, cli_name, parent_command_name=nil)
       clean unless parent_command_name
-      new(command_class, parent_command_name).create_all
+      new(command_class, cli_name, parent_command_name).create_all
     end
 
     def self.clean
@@ -15,8 +15,9 @@ module CliMarkdown
     end
 
     # command_class is top-level CLI class.
-    def initialize(command_class, parent_command_name)
+    def initialize(command_class, cli_name, parent_command_name)
       @command_class = command_class
+      @cli_name = cli_name
       @parent_command_name = parent_command_name
     end
 
@@ -24,7 +25,7 @@ module CliMarkdown
       create_index unless @parent_command_name
 
       @command_class.commands.keys.each do |command_name|
-        page = Page.new(@command_class, command_name, @parent_command_name)
+        page = Page.new(@command_class, @cli_name, command_name, @parent_command_name)
         create_page(page)
 
         if subcommand?(command_name)
@@ -32,7 +33,7 @@ module CliMarkdown
           parent_command_name = command_name
 
           say "Creating subcommands pages for #{parent_command_name}..."
-          Creator.create_all(subcommand_class, parent_command_name)
+          Creator.create_all(subcommand_class, @cli_name, parent_command_name)
         end
       end
     end
@@ -44,7 +45,7 @@ module CliMarkdown
     end
 
     def create_index
-      page = Index.new(@command_class)
+      page = Index.new(@command_class, @cli_name)
       FileUtils.mkdir_p(File.dirname(page.path))
       say "Creating #{page.path}"
       IO.write(page.path, page.doc)

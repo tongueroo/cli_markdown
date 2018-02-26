@@ -1,7 +1,8 @@
 module CliMarkdown
   class Index
-    def initialize(command_class)
+    def initialize(command_class, cli_name)
       @command_class = command_class
+      @cli_name = cli_name
     end
 
     def path
@@ -10,10 +11,10 @@ module CliMarkdown
 
     def command_list
       @command_class.commands.keys.sort.map.each do |command_name|
-        page = Page.new(@command_class, command_name)
+        page = Page.new(@command_class, @cli_name, command_name)
         link = page.path.sub("docs/", "")
         # Example: [lono cfn]({% link _reference/lono-cfn.md %})
-        "* [lono #{command_name}]({% link #{link} %})"
+        "* [#{@cli_name} #{command_name}]({% link #{link} %})"
       end.join("\n")
     end
 
