@@ -1,7 +1,7 @@
 require "lono"
 
 describe CliMarkdown::Page do
-  let(:page) { CliMarkdown::Page.new(cli_class, command, parent_command_name) }
+  let(:page) { CliMarkdown::Page.new(cli_class, cli_name, command, parent_command_name) }
   let(:parent_command_name) { nil }
 
   context "lono" do
