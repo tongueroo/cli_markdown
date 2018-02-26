@@ -5,7 +5,7 @@ describe CliMarkdown::Page do
     CliMarkdown::Page.new(
       cli_class: cli_class,
       cli_name: cli_name,
-      command: command,
+      command_name: command,
       parent_command_name: parent_command_name,
     )
   end

@@ -15,10 +15,11 @@ module CliMarkdown
     end
 
     # cli_class is top-level CLI class.
-    def initialize(cli_class:, cli_name:, parent_command_name: nil)
+    def initialize(cli_class:, cli_name:, parent_command_name: nil, index_summary: nil)
       @cli_class = cli_class
       @cli_name = cli_name
       @parent_command_name = parent_command_name
+      @index_summary = index_summary
     end
 
     def create_all
@@ -54,7 +55,7 @@ module CliMarkdown
     end
 
     def create_index
-      page = Index.new(@cli_class, @cli_name)
+      page = Index.new(@cli_class, @cli_name, @index_summary)
       FileUtils.mkdir_p(File.dirname(page.path))
       say "Creating #{page.path}"
       IO.write(page.path, page.doc)
