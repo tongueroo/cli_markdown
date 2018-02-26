@@ -1,16 +1,16 @@
 module CliMarkdown
   class Page
     attr_reader :cli_name
-    def initialize(command_class, cli_name, command_name, parent_command_name=nil)
-      @command_class = command_class # IE: Lono::CLI
+    def initialize(cli_class:, cli_name:, command_name:, parent_command_name: nil)
+      @cli_class = cli_class # IE: Lono::CLI
       @cli_name = cli_name # IE: lono
       @command_name = command_name # IE: generate
       @parent_command_name = parent_command_name # IE: cfn
-      @command = @command_class.commands[@command_name]
+      @command = @cli_class.commands[@command_name]
     end
 
     def usage
-      banner = @command_class.send(:banner, @command) # banner is protected method
+      banner = @cli_class.send(:banner, @command) # banner is protected method
       invoking_command = File.basename($0) # could be rspec, etc
       banner.sub(invoking_command, cli_name)
     end
@@ -21,7 +21,7 @@ module CliMarkdown
 
     def options
       shell = Shell.new
-      @command_class.send(:class_options_help, shell, nil => @command.options.values)
+      @cli_class.send(:class_options_help, shell, nil => @command.options.values)
       text = shell.stdout.string
       return "" if text.empty? # there are no options
 
@@ -56,11 +56,11 @@ module CliMarkdown
     end
 
     def subcommand?
-      @command_class.subcommands.include?(@command_name)
+      @cli_class.subcommands.include?(@command_name)
     end
 
     def subcommand_class
-      @command_class.subcommand_classes[@command_name]
+      @cli_class.subcommand_classes[@command_name]
     end
 
     # Note:

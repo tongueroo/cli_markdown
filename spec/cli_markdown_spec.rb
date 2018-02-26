@@ -1,7 +1,14 @@
 require "lono"
 
 describe CliMarkdown::Page do
-  let(:page) { CliMarkdown::Page.new(cli_class, cli_name, command, parent_command_name) }
+  let(:page) do
+    CliMarkdown::Page.new(
+      cli_class: cli_class,
+      cli_name: cli_name,
+      command: command,
+      parent_command_name: parent_command_name,
+    )
+  end
   let(:parent_command_name) { nil }
 
   context "lono" do
@@ -15,7 +22,7 @@ describe CliMarkdown::Page do
 
       it "generates all docs pages" do
         CliMarkdown::Creator.mute = true
-        CliMarkdown::Creator.create_all(cli_class, cli_name)
+        CliMarkdown::Creator.create_all(cli_class: cli_class, cli_name: cli_name)
       end
     end
 
