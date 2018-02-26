@@ -11,8 +11,7 @@ require_relative "lib/your_tool"
 require "cli_markdown"
 desc "Generates cli reference docs as markdown"
 task :docs do
-  index_summary = "Summary of tool"
-  CliMarkdown::Creator.create_all(cli_class: YourTool::CLI, cli_name: "your_tool", index_summary: index_summary)
+  CliMarkdown::Creator.create_all(cli_class: YourTool::CLI, cli_name: "your_tool")
 end
 ```
 

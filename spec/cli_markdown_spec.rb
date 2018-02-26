@@ -1,6 +1,11 @@
 require "lono"
 
 describe CliMarkdown::Page do
+  before(:all) do
+    path = "docs/_includes/reference.md"
+    FileUtils.mkdir_p(File.dirname(path))
+    FileUtils.touch(path) # mock this out
+  end
   let(:page) do
     CliMarkdown::Page.new(
       cli_class: cli_class,
