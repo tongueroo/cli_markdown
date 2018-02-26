@@ -1,8 +1,25 @@
 # CliMarkdown
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/cli_markdown`. To experiment with that code, run `bin/console` for an interactive prompt.
+Library generates markdown from a Thor CLI class.  The markdown is meant to be served as part of a Jekyll static website.
 
-TODO: Delete this and the text above, and describe your gem
+## Usage
+
+To use, add the following to your `Rakefile`:
+
+    require_relative "lib/your_tool"
+    require "cli_markdown"
+    desc "Generates cli reference docs as markdown"
+    task :docs do
+      CliMarkdown::Creator.create_all(YourTool::CLI)
+    end
+
+The `YourTool::CLI` class must be a Thor class.
+
+To generate docs, you can call:
+
+    rake docs
+
+This will generate docs in the `docs/_reference` folder.
 
 ## Installation
 
@@ -11,18 +28,6 @@ Add this line to your application's Gemfile:
 ```ruby
 gem 'cli_markdown'
 ```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install cli_markdown
-
-## Usage
-
-TODO: Write usage instructions here
 
 ## Development
 

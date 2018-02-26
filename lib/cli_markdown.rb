@@ -1,5 +1,8 @@
 require "cli_markdown/version"
 
 module CliMarkdown
-  # Your code goes here...
+  autoload :Creator, 'cli_markdown/creator'
+  autoload :Index, 'cli_markdown/index'
+  autoload :Page, 'cli_markdown/page'
+  autoload :Shell, 'cli_markdown/shell'
 end
