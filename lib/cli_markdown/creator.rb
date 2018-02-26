@@ -4,9 +4,9 @@ module CliMarkdown
   class Creator
     cattr_accessor :mute
 
-    def self.create_all(command_class, cli_name, parent_command_name=nil)
-      clean unless parent_command_name
-      new(command_class, cli_name, parent_command_name).create_all
+    def self.create_all(options={})
+      clean unless options[:parent_command_name]
+      new(options).create_all
     end
 
     def self.clean
@@ -14,9 +14,9 @@ module CliMarkdown
       FileUtils.rm_f("docs/reference.md")
     end
 
-    # command_class is top-level CLI class.
-    def initialize(command_class, cli_name, parent_command_name)
-      @command_class = command_class
+    # cli_class is top-level CLI class.
+    def initialize(cli_class:, cli_name:, parent_command_name: nil)
+      @cli_class = cli_class
       @cli_name = cli_name
       @parent_command_name = parent_command_name
     end
@@ -24,8 +24,13 @@ module CliMarkdown
     def create_all
       create_index unless @parent_command_name
 
-      @command_class.commands.keys.each do |command_name|
-        page = Page.new(@command_class, @cli_name, command_name, @parent_command_name)
+      @cli_class.commands.keys.each do |command_name|
+        page = Page.new(
+            cli_class: @cli_class,
+            cli_name: @cli_name,
+            command_name: command_name,
+            parent_command_name: @parent_command_name,
+          )
         create_page(page)
 
         if subcommand?(command_name)
@@ -33,7 +38,11 @@ module CliMarkdown
           parent_command_name = command_name
 
           say "Creating subcommands pages for #{parent_command_name}..."
-          Creator.create_all(subcommand_class, @cli_name, parent_command_name)
+          Creator.create_all(
+            cli_class: subcommand_class,
+            cli_name: @cli_name,
+            parent_command_name: parent_command_name
+          )
         end
       end
     end
@@ -45,18 +54,18 @@ module CliMarkdown
     end
 
     def create_index
-      page = Index.new(@command_class, @cli_name)
+      page = Index.new(@cli_class, @cli_name)
       FileUtils.mkdir_p(File.dirname(page.path))
       say "Creating #{page.path}"
       IO.write(page.path, page.doc)
     end
 
     def subcommand?(command_name)
-      @command_class.subcommands.include?(command_name)
+      @cli_class.subcommands.include?(command_name)
     end
 
     def subcommand_class(command_name)
-      @command_class.subcommand_classes[command_name]
+      @cli_class.subcommand_classes[command_name]
     end
 
     def say(text)
