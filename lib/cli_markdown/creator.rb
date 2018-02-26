@@ -15,11 +15,10 @@ module CliMarkdown
     end
 
     # cli_class is top-level CLI class.
-    def initialize(cli_class:, cli_name:, parent_command_name: nil, index_summary: nil)
+    def initialize(cli_class:, cli_name:, parent_command_name: nil)
       @cli_class = cli_class
       @cli_name = cli_name
       @parent_command_name = parent_command_name
-      @index_summary = index_summary
     end
 
     def create_all
@@ -55,10 +54,16 @@ module CliMarkdown
     end
 
     def create_index
-      page = Index.new(@cli_class, @cli_name, @index_summary)
+      create_include_reference
+      page = Index.new(@cli_class, @cli_name)
       FileUtils.mkdir_p(File.dirname(page.path))
       say "Creating #{page.path}"
       IO.write(page.path, page.doc)
+    end
+
+    def create_include_reference
+      path = "docs/_includes/reference.md"
+      IO.write(path, "Generic tool description. Please edit #{path} with a description.") unless File.exist?(path)
     end
 
     def subcommand?(command_name)

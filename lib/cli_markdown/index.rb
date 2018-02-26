@@ -1,10 +1,8 @@
 module CliMarkdown
   class Index
-    attr_reader :summary
-    def initialize(cli_class, cli_name, summary=nil)
+    def initialize(cli_class, cli_name)
       @cli_class = cli_class
       @cli_name = cli_name
-      @summary = summary
     end
 
     def path
@@ -29,7 +27,8 @@ module CliMarkdown
 ---
 title: CLI Reference
 ---
-#{summary}
+{% include reference.md %}
+
 #{command_list}
 EOL
     end
