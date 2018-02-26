@@ -6,13 +6,15 @@ Library generates markdown from a Thor CLI class.  The markdown is meant to be s
 
 To use, add the following to your `Rakefile`:
 
-    require_relative "lib/your_tool"
-    require "cli_markdown"
-    desc "Generates cli reference docs as markdown"
-    task :docs do
-      index_summary = "Summary of tool"
-      CliMarkdown::Creator.create_all(cli_class: YourTool::CLI, cli_name: "your_tool", index_summary: index_summary)
-    end
+```ruby
+require_relative "lib/your_tool"
+require "cli_markdown"
+desc "Generates cli reference docs as markdown"
+task :docs do
+  index_summary = "Summary of tool"
+  CliMarkdown::Creator.create_all(cli_class: YourTool::CLI, cli_name: "your_tool", index_summary: index_summary)
+end
+```
 
 * The `YourTool::CLI` class must be a Thor class.
 * The cli_name is the name of the cli command used for your tool.
