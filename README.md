@@ -10,7 +10,8 @@ To use, add the following to your `Rakefile`:
     require "cli_markdown"
     desc "Generates cli reference docs as markdown"
     task :docs do
-      CliMarkdown::Creator.create_all(cli_class: YourTool::CLI, cli_name: "your_tool")
+      index_summary = "Summary of tool"
+      CliMarkdown::Creator.create_all(cli_class: YourTool::CLI, cli_name: "your_tool", index_summary: index_summary)
     end
 
 * The `YourTool::CLI` class must be a Thor class.
