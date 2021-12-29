@@ -1,122 +1,131 @@
 PATH
   remote: .
   specs:
-    cli_markdown (0.1.0)
+    cli_markdown (0.1.1)
 
 GEM
   remote: https://rubygems.org/
   specs:
-    activesupport (5.1.5)
+    activesupport (7.0.0)
       concurrent-ruby (~> 1.0, >= 1.0.2)
-      i18n (~> 0.7)
-      minitest (~> 5.1)
-      tzinfo (~> 1.1)
-    aws-partitions (1.67.0)
-    aws-sdk-cloudformation (1.3.0)
-      aws-sdk-core (~> 3)
-      aws-sigv4 (~> 1.0)
-    aws-sdk-core (3.16.0)
-      aws-partitions (~> 1.0)
-      aws-sigv4 (~> 1.0)
-      jmespath (~> 1.0)
-    aws-sdk-kms (1.5.0)
-      aws-sdk-core (~> 3)
-      aws-sigv4 (~> 1.0)
-    aws-sdk-s3 (1.8.2)
-      aws-sdk-core (~> 3)
-      aws-sdk-kms (~> 1)
-      aws-sigv4 (~> 1.0)
-    aws-sigv4 (1.0.2)
-    coderay (1.1.2)
-    colorize (0.8.1)
-    concurrent-ruby (1.0.5)
-    diff-lcs (1.3)
-    ffi (1.9.23)
-    filesize (0.1.1)
-    formatador (0.2.5)
-    graph (2.8.2)
-    guard (2.14.2)
-      formatador (>= 0.2.4)
-      listen (>= 2.7, < 4.0)
-      lumberjack (>= 1.0.12, < 2.0)
-      nenv (~> 0.1)
-      notiffany (~> 0.0)
-      pry (>= 0.9.12)
-      shellany (~> 0.0)
-      thor (>= 0.18.1)
-    guard-cloudformation (0.0.3)
-      colorize
-      guard
-    guard-compat (1.2.1)
-    guard-lono (1.0.1)
-      colorize
-      guard
-      guard-compat
-    hashie (3.5.7)
-    i18n (0.9.5)
-      concurrent-ruby (~> 1.0)
-    jmespath (1.3.1)
-    json (2.1.0)
-    listen (3.1.5)
-      rb-fsevent (~> 0.9, >= 0.9.4)
-      rb-inotify (~> 0.9, >= 0.9.7)
-      ruby_dep (~> 1.2)
-    lono (4.0.6)
+      i18n (>= 1.6, < 2)
+      minitest (>= 5.1)
+      tzinfo (~> 2.0)
+    aws-eventstream (1.2.0)
+    aws-mfa-secure (0.4.3)
       activesupport
+      aws-sdk-core
+      aws_config
+      memoist
+      rainbow
+      thor
+      zeitwerk
+    aws-partitions (1.543.0)
+    aws-sdk-cloudformation (1.64.0)
+      aws-sdk-core (~> 3, >= 3.125.0)
+      aws-sigv4 (~> 1.1)
+    aws-sdk-core (3.125.0)
+      aws-eventstream (~> 1, >= 1.0.2)
+      aws-partitions (~> 1, >= 1.525.0)
+      aws-sigv4 (~> 1.1)
+      jmespath (~> 1.0)
+    aws-sdk-ec2 (1.288.0)
+      aws-sdk-core (~> 3, >= 3.125.0)
+      aws-sigv4 (~> 1.1)
+    aws-sdk-iam (1.65.0)
+      aws-sdk-core (~> 3, >= 3.125.0)
+      aws-sigv4 (~> 1.1)
+    aws-sdk-kms (1.53.0)
+      aws-sdk-core (~> 3, >= 3.125.0)
+      aws-sigv4 (~> 1.1)
+    aws-sdk-s3 (1.110.0)
+      aws-sdk-core (~> 3, >= 3.125.0)
+      aws-sdk-kms (~> 1)
+      aws-sigv4 (~> 1.4)
+    aws-sdk-ssm (1.127.0)
+      aws-sdk-core (~> 3, >= 3.125.0)
+      aws-sigv4 (~> 1.1)
+    aws-sigv4 (1.4.0)
+      aws-eventstream (~> 1, >= 1.0.2)
+    aws_config (0.1.0)
+    aws_data (0.1.1)
+      aws-sdk-core
+      memoist
+    cfn_camelizer (0.4.9)
+      activesupport
+      memoist
+      rainbow
+    cli-format (0.2.1)
+      activesupport
+      text-table
+      zeitwerk
+    concurrent-ruby (1.1.9)
+    diff-lcs (1.5.0)
+    filesize (0.2.0)
+    graph (2.10.0)
+    hashie (5.0.0)
+    i18n (1.8.11)
+      concurrent-ruby (~> 1.0)
+    jmespath (1.4.0)
+    json (2.6.1)
+    lono (7.5.1)
+      activesupport
+      aws-mfa-secure
       aws-sdk-cloudformation
+      aws-sdk-ec2
+      aws-sdk-iam
       aws-sdk-s3
-      colorize
+      aws-sdk-ssm
+      aws_data
+      bundler (~> 2)
+      cfn_camelizer
+      cli-format
       filesize
       graph
-      guard
-      guard-cloudformation
-      guard-lono
       hashie
       json
+      memoist
+      parslet
+      plissken
+      rainbow
       rb-fsevent
       render_me_pretty
+      text-table
       thor
-    lumberjack (1.0.12)
-    method_source (0.9.0)
-    minitest (5.11.3)
-    nenv (0.3.0)
-    notiffany (0.1.1)
-      nenv (~> 0.1)
-      shellany (~> 0.0)
-    pry (0.11.3)
-      coderay (~> 1.1.0)
-      method_source (~> 0.9.0)
-    rake (12.3.0)
-    rb-fsevent (0.10.2)
-    rb-inotify (0.9.10)
-      ffi (>= 0.5.0, < 2)
-    render_me_pretty (0.7.1)
+      zeitwerk
+    memoist (0.16.2)
+    minitest (5.15.0)
+    parslet (2.0.0)
+    plissken (1.4.1)
+    rainbow (3.0.0)
+    rake (13.0.6)
+    rb-fsevent (0.11.0)
+    render_me_pretty (0.8.4)
       activesupport
-      colorize
+      rainbow
       tilt
-    rspec (3.7.0)
-      rspec-core (~> 3.7.0)
-      rspec-expectations (~> 3.7.0)
-      rspec-mocks (~> 3.7.0)
-    rspec-core (3.7.1)
-      rspec-support (~> 3.7.0)
-    rspec-expectations (3.7.0)
+    rspec (3.10.0)
+      rspec-core (~> 3.10.0)
+      rspec-expectations (~> 3.10.0)
+      rspec-mocks (~> 3.10.0)
+    rspec-core (3.10.1)
+      rspec-support (~> 3.10.0)
+    rspec-expectations (3.10.1)
       diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.7.0)
-    rspec-mocks (3.7.0)
+      rspec-support (~> 3.10.0)
+    rspec-mocks (3.10.2)
       diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.7.0)
-    rspec-support (3.7.1)
-    ruby_dep (1.5.0)
-    shellany (0.0.1)
-    thor (0.20.0)
-    thread_safe (0.3.6)
-    tilt (2.0.8)
-    tzinfo (1.2.5)
-      thread_safe (~> 0.1)
+      rspec-support (~> 3.10.0)
+    rspec-support (3.10.3)
+    text-table (1.2.4)
+    thor (1.1.0)
+    tilt (2.0.10)
+    tzinfo (2.0.4)
+      concurrent-ruby (~> 1.0)
+    zeitwerk (2.5.2)
 
 PLATFORMS
-  ruby
+  x86_64-linux
 
 DEPENDENCIES
   bundler
@@ -126,4 +135,4 @@ DEPENDENCIES
   rspec
 
 BUNDLED WITH
-   1.16.1
+   2.2.32
