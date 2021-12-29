@@ -6,104 +6,8 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    activesupport (7.0.0)
-      concurrent-ruby (~> 1.0, >= 1.0.2)
-      i18n (>= 1.6, < 2)
-      minitest (>= 5.1)
-      tzinfo (~> 2.0)
-    aws-eventstream (1.2.0)
-    aws-mfa-secure (0.4.3)
-      activesupport
-      aws-sdk-core
-      aws_config
-      memoist
-      rainbow
-      thor
-      zeitwerk
-    aws-partitions (1.543.0)
-    aws-sdk-cloudformation (1.64.0)
-      aws-sdk-core (~> 3, >= 3.125.0)
-      aws-sigv4 (~> 1.1)
-    aws-sdk-core (3.125.0)
-      aws-eventstream (~> 1, >= 1.0.2)
-      aws-partitions (~> 1, >= 1.525.0)
-      aws-sigv4 (~> 1.1)
-      jmespath (~> 1.0)
-    aws-sdk-ec2 (1.288.0)
-      aws-sdk-core (~> 3, >= 3.125.0)
-      aws-sigv4 (~> 1.1)
-    aws-sdk-iam (1.65.0)
-      aws-sdk-core (~> 3, >= 3.125.0)
-      aws-sigv4 (~> 1.1)
-    aws-sdk-kms (1.53.0)
-      aws-sdk-core (~> 3, >= 3.125.0)
-      aws-sigv4 (~> 1.1)
-    aws-sdk-s3 (1.110.0)
-      aws-sdk-core (~> 3, >= 3.125.0)
-      aws-sdk-kms (~> 1)
-      aws-sigv4 (~> 1.4)
-    aws-sdk-ssm (1.127.0)
-      aws-sdk-core (~> 3, >= 3.125.0)
-      aws-sigv4 (~> 1.1)
-    aws-sigv4 (1.4.0)
-      aws-eventstream (~> 1, >= 1.0.2)
-    aws_config (0.1.0)
-    aws_data (0.1.1)
-      aws-sdk-core
-      memoist
-    cfn_camelizer (0.4.9)
-      activesupport
-      memoist
-      rainbow
-    cli-format (0.2.1)
-      activesupport
-      text-table
-      zeitwerk
-    concurrent-ruby (1.1.9)
     diff-lcs (1.5.0)
-    filesize (0.2.0)
-    graph (2.10.0)
-    hashie (5.0.0)
-    i18n (1.8.11)
-      concurrent-ruby (~> 1.0)
-    jmespath (1.4.0)
-    json (2.6.1)
-    lono (7.5.1)
-      activesupport
-      aws-mfa-secure
-      aws-sdk-cloudformation
-      aws-sdk-ec2
-      aws-sdk-iam
-      aws-sdk-s3
-      aws-sdk-ssm
-      aws_data
-      bundler (~> 2)
-      cfn_camelizer
-      cli-format
-      filesize
-      graph
-      hashie
-      json
-      memoist
-      parslet
-      plissken
-      rainbow
-      rb-fsevent
-      render_me_pretty
-      text-table
-      thor
-      zeitwerk
-    memoist (0.16.2)
-    minitest (5.15.0)
-    parslet (2.0.0)
-    plissken (1.4.1)
-    rainbow (3.0.0)
     rake (13.0.6)
-    rb-fsevent (0.11.0)
-    render_me_pretty (0.8.4)
-      activesupport
-      rainbow
-      tilt
     rspec (3.10.0)
       rspec-core (~> 3.10.0)
       rspec-expectations (~> 3.10.0)
@@ -117,12 +21,6 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.10.0)
     rspec-support (3.10.3)
-    text-table (1.2.4)
-    thor (1.1.0)
-    tilt (2.0.10)
-    tzinfo (2.0.4)
-      concurrent-ruby (~> 1.0)
-    zeitwerk (2.5.2)
 
 PLATFORMS
   x86_64-linux
@@ -130,7 +28,6 @@ PLATFORMS
 DEPENDENCIES
   bundler
   cli_markdown!
-  lono
   rake
   rspec
 
