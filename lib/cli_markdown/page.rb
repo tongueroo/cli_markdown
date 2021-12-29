@@ -2,7 +2,7 @@ module CliMarkdown
   class Page
     attr_reader :cli_name
     def initialize(cli_class:, cli_name:, command_name:, parent_command_name: nil)
-      @cli_class = cli_class # IE: Lono::CLI
+      @cli_class = cli_class # IE: Jets::Commands::Main
       @cli_name = cli_name # IE: lono
       @command_name = command_name # IE: generate
       @parent_command_name = parent_command_name # IE: cfn

@@ -1,3 +1,4 @@
+require "active_support"
 require "active_support/core_ext/object"
 
 module CliMarkdown
@@ -15,10 +16,10 @@ module CliMarkdown
     end
 
     # cli_class is top-level CLI class.
-    def initialize(cli_class:, cli_name:, parent_command_name: nil)
-      @cli_class = cli_class
-      @cli_name = cli_name
-      @parent_command_name = parent_command_name
+    def initialize(options={})
+      @cli_class = options[:cli_class]
+      @cli_name = options[:cli_name]
+      @parent_command_name = options[:parent_command_name]
     end
 
     def create_all
