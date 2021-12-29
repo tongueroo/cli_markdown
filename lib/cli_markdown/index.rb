@@ -10,7 +10,8 @@ module CliMarkdown
     end
 
     def command_list
-      @cli_class.commands.keys.sort.map.each do |command_name|
+      commands = @cli_class.commands.reject { |command_name, command| command.hidden? }
+      commands.keys.sort.map.each do |command_name|
         page = Page.new(
             cli_class: @cli_class,
             cli_name: @cli_name,
