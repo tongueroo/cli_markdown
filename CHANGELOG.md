@@ -1,5 +1,8 @@
 # Change Log
 
+## [0.1.3] - 2022-03-03
+- ensure docs/_includes folder exists
+
 ## [0.1.2] - 2021-12-29
 - dont generate docs for hidden commands
 
