@@ -65,6 +65,7 @@ module CliMarkdown
 
     def create_include_reference
       path = "docs/_includes/reference.md"
+      FileUtils.mkdir_p(File.dirname(path))
       IO.write(path, "Generic tool description. Please edit #{path} with a description.") unless File.exist?(path)
     end
 
